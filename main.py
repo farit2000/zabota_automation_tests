@@ -150,11 +150,12 @@ def location_test():
     # Нажимаем выбрать
     element = driver.find_element(by=By.XPATH, value='//*[@id="modal-root"]/div[2]/div/div[2]/div/div/button[1]')
     element.click()
-    sleep(2)
+    sleep(3)
 
     elements = driver.find_elements(By.CLASS_NAME, "general-activity-card_activity_card__address_wrapper__JEb3N")
     for element in elements:
-        if not "Азнакаево" in element.text:
+        if "г. Азнакаево" not in element.text:
+            print("actual", element.text)
             raise "not valid filter result"
     driver.close()
 
